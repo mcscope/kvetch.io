@@ -3,5 +3,5 @@
 <p class="alert alert-danger" ng-show="err">{{err}}</p>
 
 <form class="new-message" ng-submit="addMessage()">
-  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage.text" ng-keydown="handleKeydown($event)"><textarea>
+  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage.text" ng-keydown="submitForm($event)"><textarea>
 </form>
