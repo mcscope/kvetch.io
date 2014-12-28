@@ -1,7 +1,9 @@
-<message message="root"></message>
+<div class="thread-body">
+  <message message="root"></message>
 
-<ul ng-if="root.children && depth < 4" class="thread-children">
-  <li ng-repeat="child in root.children | reverse">
-    <thread rootId="{{ child }}" depth="{{ depth + 1 }}"></thread>
-  </li>
-</ul>
+  <ul ng-if="root.children && depth < 4" class="thread-children">
+    <li ng-repeat="child in root.children">
+      <thread focusable rootId="{{ child }}" depth="{{ depth + 1 }}"></thread>
+    </li>
+  </ul>
+</div>

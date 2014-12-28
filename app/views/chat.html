@@ -1,9 +1,9 @@
 <section class="messages-container">
-  <thread rootId="{{ rootId }}"></thread>
+  <thread focusable rootId="{{ rootId }}"></thread>
 </section>
 
 <p class="alert alert-danger" ng-show="err">{{err}}</p>
 
 <form class="new-message" ng-submit="addMessage()">
-  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage.text" ng-keydown="submitForm($event)"><textarea>
+  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage.text" ng-keyup="submitIfEnter($event)"></textarea>
 </form>
