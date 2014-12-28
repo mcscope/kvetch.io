@@ -12,7 +12,7 @@ message
   left: 0
 
   width: 100%
-  height: $message-input-height
+  min-height: $message-input-height
 
   background: #fff
   box-shadow: 0 0 30px rgba(174, 174, 174, 0.3)
@@ -22,7 +22,12 @@ message
     height: 100%
     width: 100%
 
-    font-size: 1.2em
+    font-size: $message-input-font-size
+
+    border: none
+    border-top: 1px solid #ddd
+
+    padding: 5px 10px
 
     &:focus
       outline: none
