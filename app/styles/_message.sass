@@ -1,3 +1,13 @@
+thread
+  display: block
+
+.messages-container
+  display: block
+
+  // A few additional pixels are subtraced for style.
+  height: calc(100vh - #{$message-input-height} - #{$navbar-height} - 30px)
+  overflow: scroll
+
 message
   display: block
   border: 1px solid #000
