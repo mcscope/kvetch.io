@@ -1,4 +1,4 @@
-angular.module("kvetchApp").controller "ChatCtrl", ($scope, fbutil, $timeout) ->
+angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout) ->
   alert = (msg) ->
     $scope.err = msg
 
@@ -6,11 +6,10 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, fbutil, $timeout) ->
       $scope.err = null
     , 5000
 
-  # synchronize a read-only, synchronized array of messages, limit to most recent 10
-  $scope.messages = fbutil.syncArray("messages", limit: 10)
+  ref = new Firebase('https://kvetch.firebaseio.com/')
+  rootRef = ref.child('messages/-JeET71Lq_8X116CKmTs')
 
-  # display any errors
-  $scope.messages.$loaded().then null, alert
+  $scope.rootMessage = rootMessage = $firebase(rootRef).$asObject()
 
   $scope.newMessage = {}
 
@@ -18,6 +17,11 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, fbutil, $timeout) ->
     return unless $scope.newMessage.text
 
     $scope.newMessage.createdAt = new Date
+
+    $scope.newMessage.parent = rootMessage.id
+    rootMessage.children ?= []
+    rootMessage.children.push $scope.newMessage.id
+    rootMessage.$save()
 
     $scope.messages.$add($scope.newMessage).then null, alert
 
