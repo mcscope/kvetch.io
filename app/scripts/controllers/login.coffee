@@ -7,45 +7,23 @@
 # LoginCtrl
 Manages authentication to any active providers.
 ###
-angular.module("kvetchApp").controller "LoginCtrl", ($scope, simpleLogin, $location) ->
+angular.module("kvetchApp").controller "LoginCtrl", ($scope, $firebaseAuth, $location) ->
+
+  ref = new Firebase('https://kvetch.firebaseio.com/messages/')
+  auth = $firebaseAuth(ref)
+
   login = (provider, opts) ->
     $scope.err = null
-    simpleLogin.login(provider, opts).then (->
-      $location.path "/account"
-      return
-    ), (err) ->
+
+    auth.$authWithOAuthPopup(provider).catch (err) ->
+      console.log err
       $scope.err = err
-      return
+    .then (authData) ->
+      console.log(authData)
 
-    return
   $scope.oauthlogin = (provider) ->
-    login provider,
-      rememberMe: true
-
-    return
-  
-  $scope.passwordLogin = (email, pass) ->
-    login "password",
-      email: email
-      password: pass
-      rememberMe: true
+    login provider
 
     return
 
-  $scope.createAccount = (email, pass, confirm) ->
-    $scope.err = null
-    unless pass
-      $scope.err = "Please enter a password"
-    else if pass isnt confirm
-      $scope.err = "Passwords do not match"
-    else
-      simpleLogin.createAccount(email, pass).then (->
-        $location.path "/account"
-        return
-      ), (err) ->
-        $scope.err = err
-        return
-
-    return
-  
   return
