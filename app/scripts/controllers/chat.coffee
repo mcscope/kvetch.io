@@ -6,10 +6,8 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout)
       $scope.err = null
     , 5000
 
-  ref = new Firebase('https://kvetch.firebaseio.com/')
-  rootRef = ref.child('messages/-JeET71Lq_8X116CKmTs')
-
-  $scope.rootMessage = rootMessage = $firebase(rootRef).$asObject()
+  $scope.rootId = parentId = '-JeET71Lq_8X116CKmTs'
+  messagesRef = new Firebase('https://kvetch.firebaseio.com/messages/')
 
   $scope.newMessage = {}
 
@@ -17,12 +15,18 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout)
     return unless $scope.newMessage.text
 
     $scope.newMessage.createdAt = new Date
+    $scope.newMessage.parents = [parentId]
 
-    $scope.newMessage.parent = rootMessage.id
-    rootMessage.children ?= []
-    rootMessage.children.push $scope.newMessage.id
-    rootMessage.$save()
+    $firebase(messagesRef).$push($scope.newMessage)
+      .then (ref) ->
+        $scope.newMessage.$id = ref.name()
 
-    $scope.messages.$add($scope.newMessage).then null, alert
+        parentMessage = $firebase(messagesRef.child(parentId)).$asObject()
+        parentMessage.$loaded().then ->
+          parentMessage.children ?= []
+          parentMessage.children.push $scope.newMessage.$id
+          parentMessage.$save()
 
-    $scope.newMessage = {}
+          $scope.newMessage = {}
+
+      , alert
