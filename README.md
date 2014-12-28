@@ -4,7 +4,7 @@ kvetch.io
 gem install compass
 npm install
 bower install
-grunt
+grunt serve
 ```
 
 #To do Oauth locally#
