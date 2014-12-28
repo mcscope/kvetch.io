@@ -91,6 +91,9 @@ angular.module("kvetchApp").config([
       controller: "AccountCtrl"
     )
 
+    .when '/chat',
+      templateUrl: 'views/chat.html'
+      controller: 'ChatCtrl'
     .otherwise redirectTo: "/"
 
 ]).run([
