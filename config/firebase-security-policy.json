@@ -1,0 +1,30 @@
+{
+  "rules": {
+    "messages": {
+      ".read": true,
+
+      "$id": {
+        ".read": true,
+        ".write": true,
+
+        "body": {
+          ".validate": "newData.isString()"
+        },
+
+        "updatedAt": {
+          ".validate": "newData.isNumber() &&
+                        newData.val() <= now"
+        },
+
+        "createdAt": {
+          ".validate": "newData.isNumber() &&
+                        newData.val() <= now"
+        },
+
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}
