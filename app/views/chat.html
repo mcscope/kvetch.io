@@ -1,6 +1,3 @@
-
-<h2>Chat</h2>
-
 <form>
   <input placeholder="Message..." ng-model="newMessage">
   <button type="submit" ng-click="addMessage(newMessage);newMessage = null;">send</button>
@@ -11,3 +8,8 @@
 </ul>
 
 <p class="alert alert-danger" ng-show="err">{{err}}</p>
+
+<form class="new-message">
+  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage"><textarea>
+  <button type="submit" ng-click="addMessage(newMessage);newMessage = null;">send</button>
+</form>
