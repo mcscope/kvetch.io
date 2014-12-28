@@ -14,7 +14,7 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout)
   $scope.addMessage = ->
     return unless $scope.newMessage.text
 
-    $scope.newMessage.createdAt = new Date
+    $scope.newMessage.createdAt = +new Date
     $scope.newMessage.parents = [parentId]
 
     $firebase(messagesRef).$push($scope.newMessage)
@@ -31,7 +31,7 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout)
 
       , alert
 
-  $scope.handleKeydown = (event) ->
+  $scope.submitIfEnter = (event) ->
     if event.keyCode is 13 and not event.shiftKey
       event.preventDefault()
       $scope.addMessage()
