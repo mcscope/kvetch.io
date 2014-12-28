@@ -1,15 +1,11 @@
-<form>
-  <input placeholder="Message..." ng-model="newMessage">
-  <button type="submit" ng-click="addMessage(newMessage);newMessage = null;">send</button>
-</form>
-
 <ul id="messages" ng-show="messages.length">
-  <li ng-repeat="message in messages | reverse">{{message.text}}</li>
+  <li ng-repeat="message in messages | reverse">
+    <message message="message"></message>
+  </li>
 </ul>
 
 <p class="alert alert-danger" ng-show="err">{{err}}</p>
 
-<form class="new-message">
-  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage"><textarea>
-  <button type="submit" ng-click="addMessage(newMessage);newMessage = null;">send</button>
+<form class="new-message" ng-submit="addMessage()">
+  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage.text" ng-keydown="handleKeydown($event)"><textarea>
 </form>
