@@ -1,4 +1,4 @@
-angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout) ->
+angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout, FocusManager) ->
   alert = (msg) ->
     $scope.err = msg
 
@@ -6,13 +6,16 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout)
       $scope.err = null
     , 5000
 
-  $scope.rootId = parentId = '-JeET71Lq_8X116CKmTs'
+  $scope.rootId = '-JeET71Lq_8X116CKmTs'
   messagesRef = new Firebase('https://kvetch.firebaseio.com/messages/')
 
   $scope.newMessage = {}
 
   $scope.addMessage = ->
     return unless $scope.newMessage.text
+
+    parent = FocusManager.focused
+    parentId = parent.attr('rootId')
 
     $scope.newMessage.createdAt = +new Date
     $scope.newMessage.parents = [parentId]
