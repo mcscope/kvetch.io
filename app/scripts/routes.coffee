@@ -99,16 +99,14 @@ angular.module("kvetchApp").config([
 ]).run([
   "$rootScope"
   "$location"
-  "simpleLogin"
   "SECURED_ROUTES"
   "loginRedirectPath"
-  ($rootScope, $location, simpleLogin, SECURED_ROUTES, loginRedirectPath) ->
+  ($rootScope, $location, SECURED_ROUTES, loginRedirectPath) ->
     check = (user) ->
       $location.path loginRedirectPath  if not user and authRequired($location.path())
       return
     authRequired = (path) ->
       SECURED_ROUTES.hasOwnProperty path
-    simpleLogin.watch check, $rootScope
     $rootScope.$on "$routeChangeError", (e, next, prev, err) ->
       $location.path loginRedirectPath  if angular.isObject(err) and err.authRequired
       return
