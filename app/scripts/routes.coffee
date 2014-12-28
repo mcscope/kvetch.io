@@ -77,8 +77,8 @@ angular.module("kvetchApp").config([
   ($routeProvider) ->
 
     $routeProvider.when("/",
-      templateUrl: "views/main.html"
-      controller: "MainCtrl"
+      templateUrl: "views/chat.html"
+      controller: "ChatCtrl"
     )
 
     .when("/login",
@@ -86,19 +86,11 @@ angular.module("kvetchApp").config([
       controller: "LoginCtrl"
     )
 
-    .when("/chat",
-      templateUrl: "views/chat.html"
-      controller: "ChatCtrl"
-    )
-
     .whenAuthenticated("/account",
       templateUrl: "views/account.html"
       controller: "AccountCtrl"
     )
 
-    .when '/chat',
-      templateUrl: 'views/chat.html'
-      controller: 'ChatCtrl'
     .otherwise redirectTo: "/"
 
 ]).run([

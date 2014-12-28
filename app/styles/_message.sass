@@ -1,0 +1,33 @@
+message
+  display: block
+  border: 1px solid #000
+
+  margin: 1em 0
+
+.new-message
+  display: block
+
+  position: fixed
+  bottom: 0
+  left: 0
+
+  width: 100%
+  min-height: $message-input-height
+
+  background: #fff
+  box-shadow: 0 0 30px rgba(174, 174, 174, 0.3)
+
+  .message-body-text
+    display: block
+    height: 100%
+    width: 100%
+
+    font-size: $message-input-font-size
+
+    border: none
+    border-top: 1px solid #ddd
+
+    padding: 5px 10px
+
+    &:focus
+      outline: none

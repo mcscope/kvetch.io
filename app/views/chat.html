@@ -1,10 +1,7 @@
-<h2>Chat</h2>
-
-<form ng-submit="addMessage()">
-  <input placeholder="Message..." ng-model="newMessage.text">
-  <button type="submit">send</button>
-</form>
-
 <thread rootId="{{ rootId }}"></thread>
 
 <p class="alert alert-danger" ng-show="err">{{err}}</p>
+
+<form class="new-message" ng-submit="addMessage()">
+  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage.text" ng-keydown="handleKeydown($event)"><textarea>
+</form>
