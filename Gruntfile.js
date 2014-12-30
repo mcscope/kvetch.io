@@ -404,9 +404,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'coffee',
-        'compass:dist',
-        'imagemin',
-        'svgmin'
+        'compass:dist'
       ]
     },
 
@@ -455,7 +453,6 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
     'filerev',
