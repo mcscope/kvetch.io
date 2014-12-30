@@ -24,4 +24,4 @@ deployment:
   production:
     branch: master
     commands:
-      - ./stout deploy --key $AMAZON_KEY_PROD --secret $AMAZON_SECRET_PROD
+      - ./stout deploy --key $AMAZON_KEY --secret $AMAZON_SECRET
