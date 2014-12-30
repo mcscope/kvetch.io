@@ -67,13 +67,22 @@ module.exports = function (grunt) {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+        livereload: 35729,
+        connect: {
+          redirect: false
+        }
       },
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
             return [
+              function(req, res, next){
+                if (/^\/[a-zA-Z0-9\-]{20}$/.test(req.url)){
+                  req.originalUrl = req.url = '/';
+                }
+                next();
+              },
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -418,7 +427,6 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -441,7 +449,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',

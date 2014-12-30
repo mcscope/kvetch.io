@@ -1,4 +1,4 @@
-angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout, FocusManager) ->
+angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $firebase, $timeout, FocusManager) ->
   alert = (msg) ->
     $scope.err = msg
 
@@ -6,7 +6,7 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $firebase, $timeout,
       $scope.err = null
     , 5000
 
-  $scope.rootId = '-JeET71Lq_8X116CKmTs'
+  $scope.rootId = $routeParams.rootId or '-JeET71Lq_8X116CKmTs'
   messagesRef = new Firebase('https://kvetch.firebaseio.com/messages/')
 
   $scope.newMessage = {}

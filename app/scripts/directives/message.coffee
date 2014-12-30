@@ -13,9 +13,4 @@ angular.module('kvetchApp')
     scope:
       message: '='
     link: (scope, element, attrs) ->
-      scope.parentColorCode = (parentIDs) ->
-        return unless parentIDs?.length
-        id = parentIDs[0]
-
-        return '#' + md5(id).substr(0, 6)
   )

@@ -76,7 +76,7 @@ angular.module("kvetchApp").config([
   "$routeProvider"
   ($routeProvider) ->
 
-    $routeProvider.when("/",
+    $routeProvider.when("/:rootId?",
       templateUrl: "views/chat.html"
       controller: "ChatCtrl"
     )
@@ -110,5 +110,7 @@ angular.module("kvetchApp").config([
     $rootScope.$on "$routeChangeError", (e, next, prev, err) ->
       $location.path loginRedirectPath  if angular.isObject(err) and err.authRequired
       return
+]).config ($locationProvider) ->
+  $locationProvider.html5Mode(true)
 
-]).constant "SECURED_ROUTES", {}
+.constant "SECURED_ROUTES", {}
