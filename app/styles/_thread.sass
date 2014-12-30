@@ -1,6 +1,34 @@
 thread
   display: block
-  border: 2px solid transparent
+  margin: 6px
 
-  &.focused
-    border: 2px solid blue
+
+  .thread-children li
+    list-style-type: none
+
+  &.focused > .thread-body > message::before
+    display: inline-block
+
+    position: absolute
+    top: 0
+    right: 100%
+
+    margin-right: 10px
+
+    content: "⇒"
+
+  &.focused::after
+    display: inline-block
+    content: "Depth: " attr(depth)
+
+    position: absolute
+    bottom: 0
+    right: 0
+
+    z-index: 10
+
+    opacity: 0.4
+    margin: 0.5em
+
+    font-family: monospace
+    font-size: 0.7em
