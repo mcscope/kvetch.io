@@ -22,7 +22,7 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $fireb
 
     $firebase(messagesRef).$push($scope.newMessage)
       .then (ref) ->
-        $scope.newMessage.$id = ref.name()
+        $scope.newMessage.$id = ref.key()
 
         parentMessage = $firebase(messagesRef.child(parentId)).$asObject()
         parentMessage.$loaded().then ->
