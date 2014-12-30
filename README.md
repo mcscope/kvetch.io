@@ -1,11 +1,15 @@
 kvetch.io
 =========
+![circleci](https://circleci.com/gh/nirrius/kvetch.io.svg?style=shield)
+
 ```
 gem install compass
 npm install
 bower install
 grunt serve
 ```
+
+Builds on every commit, deploys on every passing build.
 
 #To do Oauth locally#
 Add the following to hosts file
