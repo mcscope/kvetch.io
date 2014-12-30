@@ -1,4 +1,10 @@
 <div class="thread-body">
+  <section ng-if="depth == 0 && root.parents">
+    <a ng-repeat="parentId in root.parents" href="/{{ parentId }}">
+      parent
+    </a>
+  </section>
+
   <message message="root"></message>
 
   <ul ng-if="root.children" class="thread-children">

@@ -3,6 +3,7 @@ angular.module('kvetchApp')
     {
     templateUrl: 'views/thread.html'
     restrict: 'E'
+    scope: {}
     link: (scope, element, attrs) ->
       scope.depth = +attrs.depth
       if isNaN scope.depth
