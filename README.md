@@ -9,7 +9,7 @@ bower install
 grunt serve
 ```
 
-Builds on every commit, deploys on every passing build.
+[Builds on every commit, deploys on every passing build](https://circleci.com/gh/nirrius/kvetch.io).
 
 #To do Oauth locally#
 Add the following to hosts file
