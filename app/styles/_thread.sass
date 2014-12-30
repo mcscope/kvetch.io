@@ -1,7 +1,6 @@
 thread
   display: block
-  margin: 6px
-
+  margin-left: 20px
 
   .thread-children li
     list-style-type: none
@@ -32,3 +31,30 @@ thread
 
     font-family: monospace
     font-size: 0.7em
+
+  ul
+    padding: 0
+
+    message
+      position: relative
+      padding-left: 2px
+
+      .message-body
+        padding-left: 20px
+        background-color: white
+
+    message:before
+      content: ""
+      position: absolute
+      width: 15px
+      top: 50%
+      left: 0
+      height: 10000%
+      border-top: 2px solid gray
+      border-left: 2px solid gray
+
+    li.last > thread > .thread-body > message:before
+      border-left-color: white
+
+    li.first > thread > .thread-body > message:before
+      top: 50%

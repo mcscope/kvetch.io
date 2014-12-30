@@ -2,7 +2,7 @@
   <message message="root"></message>
 
   <ul ng-if="root.children && depth < 4" class="thread-children">
-    <li ng-repeat="child in root.children">
+    <li ng-repeat="child in root.children" ng-class="{'last': $last, 'first': $first}">
       <thread focusable rootId="{{ child }}" depth="{{ depth + 1 }}"></thread>
     </li>
   </ul>
