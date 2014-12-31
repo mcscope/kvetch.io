@@ -1,5 +1,13 @@
 <div class="message-body">
-  <span ng-bind-html="message.text | linky"></span>
+  <span ng-bind-html="text"></span>
+
+  <ul class="message-images" ng-if="images.length">
+    <li ng-repeat="image in images">
+      <a href="{{ image }}" target="_blank">
+        <img ng-src="{{ image }}">
+      </a>
+    </li>
+  </ul>
 
   <a href="/{{ message.$id }}">link</a>
 </div>
