@@ -1,15 +1,15 @@
 <div class="thread-body">
+  <ul ng-if="root.children" class="thread-children">
+    <li ng-repeat="child in root.children | reverse" ng-class="{'last': $last, 'first': $first}">
+      <thread focusable rootId="{{ child }}" depth="{{ depth + 1 }}"></thread>
+    </li>
+  </ul>
+
+  <message message="root"></message>
+
   <section ng-if="depth == 0 && root.parents">
     <a ng-repeat="parentId in root.parents" href="/{{ parentId }}">
       parent
     </a>
   </section>
-
-  <message message="root"></message>
-
-  <ul ng-if="root.children" class="thread-children">
-    <li ng-repeat="child in root.children" ng-class="{'last': $last, 'first': $first}">
-      <thread focusable rootId="{{ child }}" depth="{{ depth + 1 }}"></thread>
-    </li>
-  </ul>
 </div>
