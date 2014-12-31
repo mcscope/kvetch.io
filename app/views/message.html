@@ -1,5 +1,5 @@
 <div class="message-body">
-  {{ message.text }}
+  <span ng-bind-html="message.text | linky"></span>
 
   <a href="/{{ message.$id }}">link</a>
 </div>

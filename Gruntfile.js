@@ -78,7 +78,7 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               function(req, res, next){
-                if (/^\/[a-zA-Z0-9\-_]{20}$/.test(req.url)){
+                if (/^\/[^\.]+$/.test(req.url)){
                   req.originalUrl = req.url = '/';
                 }
                 next();
