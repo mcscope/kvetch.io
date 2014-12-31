@@ -8,6 +8,8 @@ angular.module('kvetchApp')
       message: '='
     link: (scope, element, attrs) ->
       do updateMessage = ->
+        return unless scope.message?
+
         scope.images = []
 
         imageRe.lastIndex = 0
