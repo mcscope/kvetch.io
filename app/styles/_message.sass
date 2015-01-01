@@ -5,6 +5,7 @@
   height: calc(100vh - #{$message-input-height} - #{$navbar-height} - 8px)
   overflow: scroll
 
+
 message
   display: block
   position: relative
@@ -14,6 +15,7 @@ message
     padding-left: 20px
     max-width: 40em
     position: relative
+    word-wrap: break-word
 
   .message-images
     a
@@ -40,6 +42,10 @@ message
 
       img
         max-height: 400px
+
+@media(max-width: 40em)
+  message .message-body
+    max-width: 100vw
 
 .new-message
   display: block
