@@ -3,6 +3,7 @@ kvetch.io
 ![circleci](https://circleci.com/gh/nirrius/kvetch.io.svg?style=shield)
 
 ```
+gem install sass
 gem install compass
 npm install
 bower install

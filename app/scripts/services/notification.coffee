@@ -1,5 +1,5 @@
 angular.module("kvetchApp").service "Notification", ($firebase, $window, $rootScope) ->
-  return N = {
+  return N =
     init: ({rootId}) ->
       $window.Notification.requestPermission()
 
