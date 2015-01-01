@@ -23,25 +23,10 @@ message
 
     img
       display: block
-      max-width: 400px
+      max-width: 200px
       max-height: 200px
-
-  @media(min-width:900px)
-    .message-images
-      width: 400px
-      max-height: 400px
-      overflow: hidden
-
-      position: absolute
-      right: 5px
-      top: 0
-      border-top: 5px solid white
-      margin-top: -5px
-      box-sizing: border-box
-      z-index: 1000
-
-      img
-        max-height: 400px
+      margin: 5px
+      border: 1px solid rgba(0, 0, 0, 0.2)
 
 @media(max-width: 40em)
   message .message-body
