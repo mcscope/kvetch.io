@@ -1,55 +1,67 @@
+@import "compass/utilities/general/clearfix"
+
 .messages-container > thread
   overflow: hidden
 
 thread
   display: block
-  margin-left: 20px
 
-  .thread-children li
-    list-style-type: none
+  .thread-children
+    width: 100%
+    padding: 0
+
+    +clearfix
+
+    li
+      list-style-type: none
+      float: left
+      position: relative
+
+    li + li, li.first:not(.last)
+      border-top: 2px solid gray
+      margin-top: 10px
+      padding-top: 10px
+
+      &:before
+        border-left: 2px solid gray
+        content: ""
+        position: absolute
+        left: 20px
+        top: 0
+        height: 10px
+
+    li.first:not(.last)
+      &:before
+        border-left: 2px solid gray
+        content: ""
+        position: absolute
+        left: 40px
+        top: -10px
+        height: 20px
+
+      &:after
+        border-top: 2px solid white
+        content: ""
+        position: absolute
+        width: 40px
+        top: -2px
+      
+    li.last:not(.first)
+      border-top-width: 0
+
+      &:after
+        border-top: 2px solid gray
+        content: ""
+        position: absolute
+        width: 20px
+        top: 0
 
   &.focused > .thread-body > message::before
     display: inline-block
 
     position: absolute
     top: 0
-    right: 100%
 
     margin-right: 10px
 
     content: "⇒"
-
-  &.focused::after
-    display: inline-block
-    content: "Depth: " attr(depth)
-
-    position: absolute
-    bottom: 0
-    right: 0
-
-    z-index: 10
-
-    opacity: 0.4
-    margin: 0.5em
-
-    font-family: monospace
-    font-size: 0.7em
-
-  ul
-    padding: 0
-
-    message:before
-      content: ""
-      position: absolute
-      width: 15px
-      top: 50%
-      left: 0
-      height: 10000%
-      border-top: 2px solid gray
-      border-left: 2px solid gray
-
-    li.last > thread > .thread-body > message:before
-      border-left-color: white
-
-    li.first > thread > .thread-body > message:before
-      top: 50%

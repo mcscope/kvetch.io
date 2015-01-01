@@ -20,6 +20,9 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $fireb
     $scope.newMessage.createdAt = +new Date
     $scope.newMessage.parents = [parentId]
 
+    # Force the new element to take focus
+    FocusManager.set null
+
     $firebase(messagesRef).$push($scope.newMessage)
       .then (ref) ->
         $scope.newMessage.$id = ref.key()
