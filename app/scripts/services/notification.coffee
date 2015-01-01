@@ -1,6 +1,9 @@
 angular.module("kvetchApp").service "Notification", ($firebase, $window, $rootScope) ->
   return N =
     init: ({rootId}) ->
+      if not $window.Notification?
+        return
+
       $window.Notification.requestPermission()
 
       messagesRef = new Firebase('https://kvetch.firebaseio.com/messages/')
