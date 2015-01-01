@@ -1,4 +1,4 @@
-angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $firebase, $timeout, FocusManager) ->
+angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $firebase, $timeout, FocusManager, Notification) ->
   alert = (msg) ->
     $scope.err = msg
 
@@ -41,3 +41,6 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $fireb
     if event.keyCode is 13 and not event.shiftKey
       event.preventDefault()
       $scope.addMessage()
+
+  Notification.init
+    rootId: $scope.rootId
