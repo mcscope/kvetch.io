@@ -7,6 +7,9 @@ angular.module('kvetchApp')
     scope:
       message: '='
     link: (scope, element, attrs) ->
+      scope.humanize = (datetime) ->
+        moment(datetime).fromNow()
+
       do updateMessage = ->
         return unless scope.message?
 

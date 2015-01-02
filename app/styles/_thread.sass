@@ -16,6 +16,7 @@ thread
       list-style-type: none
       float: left
       position: relative
+      padding-right: 20px
 
     li + li, li.first:not(.last)
       border-top: 2px solid gray
@@ -45,7 +46,7 @@ thread
         position: absolute
         width: 40px
         top: -2px
-      
+
     li.last:not(.first)
       border-top-width: 0
 
@@ -56,13 +57,24 @@ thread
         width: 20px
         top: 0
 
-  &.focused > .thread-body > message::before
-    display: inline-block
+  &.focused > .thread-body > message
+    border-color: #bb0000
+    background-color: #FFF4F4
 
-    position: absolute
-    top: 0
+  .parent-reference
+    display: block
 
-    margin-right: 10px
-    line-height: 39px
+    padding: 10px 0
 
-    content: "⇒"
+    text-align: center
+    text-shadow: 0 1px #ccc
+    color: #ccc
+
+
+    transition: 250ms background-color
+
+    &:hover
+      background-color: #DFFFDF
+      text-decoration: none
+      color: #000
+

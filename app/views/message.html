@@ -1,4 +1,6 @@
+<a href="/{{ message.$id }}" class="glyphicon glyphicon-share-alt message-reference"></a>
 <div class="message-body">
+
   <span ng-bind-html="text"></span>
 
   <ul class="message-images" ng-if="images.length">
@@ -9,5 +11,10 @@
     </li>
   </ul>
 
-  <a href="/{{ message.$id }}">link</a>
 </div>
+
+<footer class="message-details">
+  <span class="created-at">
+    {{ humanize(message.createdAt) }}
+  </span>
+</footer>
