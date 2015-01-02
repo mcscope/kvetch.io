@@ -7,7 +7,11 @@
 # AccountCtrl
 Provides rudimentary account management functions.
 ###
-angular.module("kvetchApp").controller "AccountCtrl", ($scope, user, simpleLogin, fbutil, $timeout) ->
+angular.module("kvetchApp").controller "AccountCtrl", ($scope, user, $firebaseAuth, fbutil, $timeout) ->
+
+  ref = new Firebase('https://kvetch.firebaseio.com/messages/')
+  auth = $firebaseAuth(ref)
+
   error = (err) ->
     alert err, "danger"
     return
@@ -32,31 +36,8 @@ angular.module("kvetchApp").controller "AccountCtrl", ($scope, user, simpleLogin
     return
 
   $scope.user = user
-  $scope.logout = simpleLogin.logout
+  $scope.logout = auth.$unAuth()
   $scope.messages = []
   loadProfile user
-  
-  $scope.changePassword = (oldPass, newPass, confirm) ->
-    $scope.err = null
-    if not oldPass or not newPass
-      error "Please enter all fields"
-    else if newPass isnt confirm
-      error "Passwords do not match"
-    else
-      simpleLogin.changePassword(user.email, oldPass, newPass).then (->
-        success "Password changed"
-        return
-      ), error
-    return
 
-  $scope.changeEmail = (pass, newEmail) ->
-    $scope.err = null
-    simpleLogin.changeEmail(pass, newEmail).then ((user) ->
-      loadProfile user
-      success "Email changed"
-      return
-    ), error
-    return
-
-  
   return

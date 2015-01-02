@@ -78,6 +78,16 @@ angular.module("kvetchApp").config([
 
     $routeProvider
 
+    .when("/login",
+      templateUrl: "views/login.html"
+      controller: "LoginCtrl"
+    )
+
+    .when("/account",
+      templateUrl: "views/account.html"
+      controller: "AccountCtrl"
+    )
+
     .when("/today",
       redirectTo: do () ->
         d = new Date()
@@ -87,16 +97,6 @@ angular.module("kvetchApp").config([
     .when("/:rootId?",
       templateUrl: "views/chat.html"
       controller: "ChatCtrl"
-    )
-
-    .when("/login",
-      templateUrl: "views/login.html"
-      controller: "LoginCtrl"
-    )
-
-    .whenAuthenticated("/account",
-      templateUrl: "views/account.html"
-      controller: "AccountCtrl"
     )
 
     .otherwise redirectTo: "/"
