@@ -10,6 +10,15 @@ message
   display: block
   position: relative
 
+  margin: 6px 0
+
+  border-radius: 2px
+  border: 1px solid #ccc
+
+  background-color: #fafafa
+
+  padding: 2px 6px
+
   .message-body
     padding: 10px 8px
 
@@ -36,8 +45,9 @@ message
     position: absolute
     top: 2px
     right: 2px
+    z-index: 10
 
-    opacity: 0.2
+    opacity: 0.1
 
     &:hover
       text-decoration: none

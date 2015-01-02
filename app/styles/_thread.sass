@@ -12,16 +12,6 @@ thread
 
     +clearfix
 
-    message
-      margin: 6px 0
-
-      border-radius: 2px
-      border: 1px solid #ccc
-
-      background-color: #fafafa
-
-      padding: 2px 6px
-
     li
       list-style-type: none
       float: left
@@ -70,3 +60,21 @@ thread
   &.focused > .thread-body > message
     border-color: #bb0000
     background-color: #FFF4F4
+
+  .parent-reference
+    display: block
+
+    padding: 10px 0
+
+    text-align: center
+    text-shadow: 0 1px #ccc
+    color: #ccc
+
+
+    transition: 250ms background-color
+
+    &:hover
+      background-color: #DFFFDF
+      text-decoration: none
+      color: #000
+
