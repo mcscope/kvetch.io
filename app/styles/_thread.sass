@@ -12,12 +12,16 @@ thread
 
     +clearfix
 
-    .message-body
+    message
       margin: 6px 0
 
-      background-color: #fafafa
-      border: 1px solid #ccc
       border-radius: 2px
+      border: 1px solid #ccc
+
+      background-color: #fafafa
+
+      padding: 2px 6px
+
     li
       list-style-type: none
       float: left
@@ -63,14 +67,6 @@ thread
         width: 20px
         top: 0
 
-  &.focused > .thread-body > message::before
-    display: inline-block
-
-    position: absolute
-    top: 0
-    z-index: 10
-
-    margin-right: 10px
-    line-height: 39px
-
-    content: "⇒"
+  &.focused > .thread-body > message
+    border-color: #bb0000
+    background-color: #FFF4F4
