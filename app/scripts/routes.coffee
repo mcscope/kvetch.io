@@ -81,7 +81,7 @@ angular.module("kvetchApp").config([
     .when("/today",
       redirectTo: do () ->
         d = new Date()
-        "/#{d.getMonth()+1}-#{d.getDate()}-#{d.getFullYear()}"
+        "/#{d.getUTCMonth()+1}-#{d.getUTCDate()}-#{d.getUTCFullYear()}"
     )
 
     .when("/:rootId?",
