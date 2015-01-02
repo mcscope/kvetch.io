@@ -76,7 +76,15 @@ angular.module("kvetchApp").config([
   "$routeProvider"
   ($routeProvider) ->
 
-    $routeProvider.when("/:rootId?",
+    $routeProvider
+
+    .when("/today",
+      redirectTo: do () ->
+        d = new Date()
+        "/#{d.getUTCMonth()+1}-#{d.getUTCDate()}-#{d.getUTCFullYear()}"
+    )
+
+    .when("/:rootId?",
       templateUrl: "views/chat.html"
       controller: "ChatCtrl"
     )
