@@ -1,4 +1,4 @@
-angular.module("kvetchApp").service "Notification", ($firebase, $window, $rootScope) ->
+angular.module("kvetchApp").service "Notification", ($firebase, $window, $rootScope, Author) ->
   return N =
     init: ({rootId}) ->
       if not $window.Notification?
@@ -14,6 +14,10 @@ angular.module("kvetchApp").service "Notification", ($firebase, $window, $rootSc
           $rootScope.$evalAsync ->
             message = messages.$getRecord(key)
             return unless message
+
+            # don't notify if you posted the message yourself
+            if message.author && message.author.uid && message.author.uid == Author.get().uid
+              return
 
             if event is 'child_added' and not document.hasFocus()
               parent = message
