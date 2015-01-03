@@ -28,7 +28,11 @@ angular.module("kvetchApp").service "Notification", ($firebase, $window, $rootSc
 
               return unless found
 
-              notice = new $window.Notification "Oy Vey",
+              name = "Oy Vey"
+              if message.author && message.author.name
+                name = message.author.name
+
+              notice = new $window.Notification name,
                 tag: message.$id
                 body: message.text
                 icon: '/favicon.ico'

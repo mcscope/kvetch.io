@@ -1,4 +1,4 @@
-angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $firebase, $timeout, FocusManager, Notification) ->
+angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $firebase, $timeout, FocusManager, Notification, Author) ->
   alert = (msg) ->
     $scope.err = msg
 
@@ -18,6 +18,7 @@ angular.module("kvetchApp").controller "ChatCtrl", ($scope, $routeParams, $fireb
     parentId = parent.attr('rootId')
 
     $scope.newMessage.createdAt = +new Date
+    $scope.newMessage.author = Author.get()
     $scope.newMessage.parents = [parentId]
 
     # Force the new element to take focus
