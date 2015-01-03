@@ -4,6 +4,7 @@
 
 <p class="alert alert-danger" ng-show="err">{{err}}</p>
 
-<form class="new-message" ng-submit="addMessage()">
-  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage.text" ng-keyup="submitIfEnter($event)" grab-focus></textarea>
+<form class="new-message" ng-submit="addMessage()" upload-progress="{{ uploadProgress }}">
+  <textarea class="message-body-text" placeholder="Send a message..." ng-model="newMessage.text" ng-keyup="submitIfEnter($event)" grab-focus ng-file-drop ng-multiple="true" accept="image/*" hideOnDropNotAvailable="false" ng-file-change="fileDropped($files)"></textarea>
+  <progress value="{{ uploadProgress }}" max="100" ng-if="uploading"></progress>
 </form>

@@ -15,7 +15,8 @@
     "firebase-simple-login": "1.6.x",
     "angularfire": "0.9.x",
     "blueimp-md5": "~1.1.0",
-    "moment": "~2.8.4"
+    "moment": "~2.8.4",
+    "angular-file-upload": "git@github.com:danialfarid/angular-file-upload.git#~2.0.5"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
