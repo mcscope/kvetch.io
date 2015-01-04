@@ -18,11 +18,11 @@
     <img src="{{ message.author.avatar }}">
   </figure>
 
-  <span class="author-name">
+  <span class="message-author-name">
     {{ message.author.name }}
   </span>
 
-  <span class="deemphasized created-at">
+  <span class="deemphasized message-created-at">
     {{ humanize(message.createdAt) }}
   </span>
 </footer>
