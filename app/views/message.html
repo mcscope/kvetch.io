@@ -22,7 +22,7 @@
     {{ message.author.name || "you know who" }}
   </span>
 
-  <span class="deemphasized message-created-at">
+  <span title="{{ formatDateString(message.createdAt) }}" class="deemphasized message-created-at">
     {{ humanize(message.createdAt) }}
   </span>
 </footer>

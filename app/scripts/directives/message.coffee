@@ -7,8 +7,11 @@ angular.module('kvetchApp')
     scope:
       message: '='
     link: (scope, element, attrs) ->
-      scope.humanize = (datetime) ->
+      scope.humanize = (datetime = "") ->
         moment(datetime).fromNow()
+
+      scope.formatDateString = (datetime = "") ->
+        moment(datetime).toISOString()
 
       do updateMessage = ->
         return unless scope.message?
