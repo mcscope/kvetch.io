@@ -18,11 +18,38 @@ message
   background-color: #fafafa
   max-width: 20em
 
-  padding: 2px 6px
+  .message-body
+    display: inline-block
+    vertical-align: top
+
+    padding: 12px 14px
+
+    position: relative
+
+    word-break: break-word
+
+  .message-details
+    display: block
+
+    padding-right: 5px
+
+    // Remove 1em space between elements.
+    & > *
+      display: inline-block
+      vertical-align: middle
+
+      font-size: 0.7em
+
+    .created-at
+      // REFACTOR: floats should be reserved for images wrapping around text.
+      // Flexbox should sort all this inline-block work out.
+      float: right
+      margin-top: 8px
+
+      font-variant: small-caps
 
   .message-avatar
     display: inline-block
-    vertical-align: top
 
     width: 25px
     height: 25px
@@ -31,36 +58,9 @@ message
     background-image: url("http://i.imgur.com/gN6cSlS.jpg")
     background-size: cover
 
-    position: absolute
-    bottom: 0
-    left: 0
-
     img
       display: block
       height: 100%
-
-  .message-body
-    display: inline-block
-    vertical-align: top
-
-    padding: 10px 8px
-
-    position: relative
-
-    word-wrap: break-word
-
-  .message-details
-    display: block
-    font-size: 0
-    text-align: right
-
-    // Remove 1em space between elements.
-    & > *
-      display: inline-block
-      font-size: 1rem
-
-    .created-at
-      font-variant: small-caps
 
   .message-reference
     position: absolute
