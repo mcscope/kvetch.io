@@ -4,10 +4,10 @@ youtubeRe = /https?:\/\/www.youtube.com\/watch?[^ ]*( |$)/ig
 regex =
   images:
     re: /https?:\/\/.*\.(?:jpg|jpeg|gif|png|webp|svg)/ig
-    replacement: (image) -> "<a href='#{ image[0] }' target='_blank'>image</a>"
+    replacement: (image) -> ""
   youtubeVideos:
     re: /https?:\/\/www.youtube.com\/watch?[^ ]*( |$)/ig
-    replacement: (video) -> "<a href='#{ video[0] }' target='_blank'>video</a>"
+    replacement: (video) -> ""
   links:
     re: /^([^<]*)(?: |^)((https?:\/\/)?(www\.)?[^ ]+\.[^ ]{2,}(\/[^ ]*)?)($| )/ig
     replacement: (link) -> "#{ link[1] } <a href='#{ link[2] }' target='_blank'>#{ link[2] }</a>"
