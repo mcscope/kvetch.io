@@ -16,7 +16,6 @@ message
   border: 1px solid #efefef
 
   background-color: #fdfdfd
-  max-width: 20em
 
   .message-body
     display: inline-block
@@ -27,6 +26,10 @@ message
     position: relative
 
     word-break: break-word
+
+    > span
+      max-width: 20em
+      display: block
 
   .message-details
     display: block
