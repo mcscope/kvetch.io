@@ -4,10 +4,13 @@ youtubeRe = /https?:\/\/www.youtube.com\/watch?[^ ]*( |$)/ig
 regex =
   images:
     re: /https?:\/\/.*\.(?:jpg|jpeg|gif|png|webp|svg)/ig
-    replacement: (images) -> "<a href='#{ images[0] }' target='_blank'>image</a>"
+    replacement: (image) -> "<a href='#{ image[0] }' target='_blank'>image</a>"
   youtubeVideos:
     re: /https?:\/\/www.youtube.com\/watch?[^ ]*( |$)/ig
-    replacement: (videos) -> "<a href='#{ videos[0] }' target='_blank'>video</a>"
+    replacement: (video) -> "<a href='#{ video[0] }' target='_blank'>video</a>"
+  links:
+    re: /^([^<]*)(?: |^)((https?:\/\/)?(www\.)?[^ ]+\.[^ ]{2,}(\/[^ ]*)?)($| )/ig
+    replacement: (link) -> "#{ link[1] } <a href='#{ link[2] }' target='_blank'>#{ link[2] }</a>"
 
 angular.module('kvetchApp')
   .directive 'message', (Notification) ->
@@ -28,13 +31,15 @@ angular.module('kvetchApp')
         scope.text = scope.message.text
         for type, pat of regex
           scope[type] = []
+          items = []
 
           pat.re.lastIndex = 0
           while item = pat.re.exec(scope.text)
+            items.push item
             scope[type].push item[0]
 
-          if scope[type].length is 1
-            scope.text = scope.text.replace scope[type][0], pat.replacement(scope[type])
+          for item in items
+            scope.text = scope.text.replace item[0], pat.replacement(item)
 
       scope.$watch 'message.text', updateMessage
 
