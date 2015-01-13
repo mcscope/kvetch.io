@@ -19,5 +19,6 @@ angular
     'firebase',
     'firebase.utils',
     'simpleLogin',
-    'angularFileUpload'
+    'angularFileUpload',
+    'youtube-embed'
   ])
